@@ -1,8 +1,105 @@
 {
 	"name": "Basement",
-	"objects": [
+	"onEnter":
+	[
+		{
+			"type":"message",
+			"message":"The room is dark and has no windows. Someone closes the door behind you."
+		},
+		{
+			"type":"changeLock",
+			"room":"basement",
+			"direction":"East",
+			"locked":true
+		},
+		{
+			"type":"checkConstraint",
+			"item":"Gas Lamp",
+			"failMsg":"The darkness is absolute and you lost orientation. In pure darkness you starve to death."
+		}
 	],
-	"directions": [
+	"onUse":
+	{
+		"Gas Lamp":
+		[
+			{
+				"type":"message",
+				"message":"You lit the gaslamp. The room becomes visible."
+			},
+			{
+				"type":"addObject",
+				"room":"basement",
+				"objects":
+				[
+					{
+						"name": "Hammer",
+						"description": "A hammer with an iron head and a wooden handle.",
+						"examine":"It looks fairly new, but it has been used a lot.",
+						"takeable":true,
+						"useable":true
+					},
+					{
+						"name": "Shovel",
+						"description": "A shovel for garden work.",
+						"examine":"Wet dirt is on the shovel head.",
+						"takeable":true,
+						"useable":true
+					},
+					{
+						"name": "Lawnmower",
+						"description": "A lawnmower with a petrol engine.",
+						"examine":"It has no blades."
+					},
+					{
+						"name": "Wooden Plank",
+						"description": "An arm long wooden plank.",
+						"examine":"A lot of dents cover its surface.",
+						"takeable":true,
+						"useable":true
+					},
+					{
+						"name": "Drill",
+						"description":"An electric drill with a cable.",
+						"examine":"The drill head is bent.",
+						"takeable":true,
+						"useable":true
+					},
+					{
+						"name": "Chair",
+						"description": "A single chair made of cherry red wood in the middle of the room.",
+						"examine":"The backrest is full of notches."
+					}
+				]
+			},
+			{
+				"type":"addDirection",
+				"room":"basement",
+				"directions":
+				[
+					{
+						"name":"West",
+						"room":"tunnel",
+						"locked":false
+					}
+				]
+			}
+		],
+		"Axe":
+		[
+			{
+				"type":"message",
+				"message":"You chop the door open. Light floods the basement. You leave the basement and enter the living room."
+			},
+			{
+				"type":"endGame"
+			}
+		]
+	},
+	"objects":
+	[
+	],
+	"directions":
+	[
 		{
 			"name":"East",
 			"room":"living",

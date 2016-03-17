@@ -1,10 +1,45 @@
 {
 	"name": "Entrance",
+	"onUse":
+	{
+		"Small Key":
+		[
+			{
+				"type":"message",
+				"message":"You opened the drawer in the side table with the old key."
+			},
+			{
+				"type":"addObject",
+				"room":"entrance",
+				"objects":[
+					{
+						"name": "Key",
+						"description": "A large key.",
+						"examine":"It might fit into one of the door locks.",
+						"takeable":true,
+						"useable":true
+					}
+				]
+			}
+		]
+	},
 	"objects": [
 		{
 			"name": "Coat Stand",
 			"description": "A coat stand for visitors.",
-			"examine":"A single black coat hangs on it."
+			"examine":"A single black coat hangs on it. The pockets of the coat are empty."
+		},
+		{
+			"name": "Side Table",
+			"description": "A small wooden side table.",
+			"examine":"It has a drawer with a lock, which is locked."
+		},
+		{
+			"name": "Gas Lamp",
+			"description": "A gas lamp on the side table.",
+			"examine":"It's very old and rusty and might not even work anymore.",
+			"useable":true,
+			"takeable":true
 		}
 	],
 	"directions": [

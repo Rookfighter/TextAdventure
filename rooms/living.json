@@ -1,10 +1,42 @@
 {
 	"name": "Living Room",
+	"onUse":
+	{
+		"Key":
+		[
+			{
+				"type":"changeLock",
+				"room":"living",
+				"direction":"West",
+				"locked":false
+			}
+		]
+	},
 	"objects": [
 		{
 			"name": "Couch",
-			"description": "A very comfy looking couch",
+			"description": "A red leather couch, standing on a carpet.",
 			"examine":"A lot of scratches cover the surface and the cushion was cut on various spots."
+		},
+		{
+			"name": "Portrait",
+			"description": "A portrait of an old man.",
+			"examine":"The old man's eyes glare with wisdom of decades."
+		},
+		{
+			"name": "Desk",
+			"description": "A desk made of dark cherry red wood with several drawers.",
+			"examine":"Documents are spread all over it. The chair is missing."
+		},
+		{
+			"name": "Carpet",
+			"description": "A carpet with a complex pattern of lines and colors.",
+			"examine":"It's not aligned to the room anymore."
+		},
+		{
+			"name": "Vase",
+			"description": "A fragile vase without any flowers in it.",
+			"examine":"The water smells rotten."
 		}
 	],
 	"directions": [

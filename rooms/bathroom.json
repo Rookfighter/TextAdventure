@@ -1,16 +1,32 @@
 {
 	"name": "Bathroom",
-	"objects": [
+	"objects":
+	[
 		{
-			"id":"k1",
-			"name": "Key",
-			"description": "A old looking key.",
-			"examine":"This might fit into one of the door locks.",
+			"name": "Sink",
+			"description": "A dirty sink for washing your hands.",
+			"examine":"A used tooth bush lies in the sink."
+		},
+		{
+			"name": "Bathtub",
+			"description": "A white bathtub.",
+			"examine":"It is half full and the shower curtain was removed."
+		},
+		{
+			"name": "Small Key",
+			"description": "An old looking key on the edge of the bathtub.",
+			"examine":"This might fit into one of the locks in the house.",
 			"takeable":true,
 			"useable":true
+		},
+		{
+			"name": "Bath Mat",
+			"description": "A bath mat in front of the bathtub.",
+			"examine":"It's wet."
 		}
 	],
-	"directions": [
+	"directions":
+	[
 		{
 			"name":"West",
 			"room":"living",

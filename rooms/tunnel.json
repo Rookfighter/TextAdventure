@@ -1,0 +1,28 @@
+{
+	"name": "Tunnel",
+	"objects":
+	[
+		{
+			"name": "Pickaxe",
+			"description": "A mining pickaxe.",
+			"examine":"Its covered in dust. The handle is worn out.",
+			"takeable":true,
+			"useable":true
+		},
+		{
+			"name": "Axe",
+			"description": "An axe for wood work.",
+			"examine":"Its blade looks dull.",
+			"takeable":true,
+			"useable":true
+		}
+	],
+	"directions":
+	[
+		{
+			"name":"East",
+			"room":"basement",
+			"locked":false
+		}
+	]
+}
