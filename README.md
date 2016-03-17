@@ -10,3 +10,5 @@ The player can walk through various rooms and take, use or examine items to expl
 The game should run with any vanilla python 2.7 implementation. It was tested on Ubuntu 14.04 and Windows 10.
 
 To start the game run **Main.py**.
+
+Python can be dowloaded [here](https://www.python.org/downloads/).
