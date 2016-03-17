@@ -1,6 +1,7 @@
 import io
 import json
 import os
+import utils
 from Room import Room
 
 class IOSystem:
@@ -19,30 +20,22 @@ class IOSystem:
         room = Room()
         room.id = roomID
         room.name = jsObj['name']
-        room.objects = []
         if 'objects' in jsObj:
             room.objects = jsObj['objects']
-
-        room.onUse = []
+        if 'directions' in jsObj:
+            room.directions = jsObj['directions']
         if 'onUse' in jsObj:
             room.onUse = jsObj['onUse']
-
-        room.onEnter = []
         if 'onEnter' in jsObj:
             room.onEnter = jsObj['onEnter']
 
-        for obj in room.objects:
-            if not 'takeable' in obj:
-                obj['takeable'] = False
-            if not 'useable' in obj:
-                obj['useable'] = False
+        utils.defaultRoom(room)
 
-        room.directions = jsObj['directions']
+        for obj in room.objects:
+            utils.defaultObject(obj)
+
         for direction in room.directions:
-            if not 'visible' in direction:
-                direction['visible'] = True
-            if not 'locked' in direction:
-                direction['locked'] = False
+            utils.defaultDirection(direction)
 
         self.__rooms[roomID] = room
 

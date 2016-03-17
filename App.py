@@ -19,7 +19,7 @@ class App:
                                            self.__eventSystem.getEventQueue())
         self.__tuiSystem.setActions(self.__actionSystem.getActions())
 
-    def run(self):
+    def __run(self):
         self.__player.room = INIT_ROOM
         while True:
             self.__ioSystem.update()
@@ -28,4 +28,14 @@ class App:
             if not self.__eventSystem.update():
                 break
 
+    def run(self):
+        try:
+            self.__run()
+        except KeyboardInterrupt:
+            pass
+        except Exception as e:
+            print(e)
+
+        print('')
         raw_input('Press RETURN...')
+        print('')

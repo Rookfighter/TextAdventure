@@ -1,4 +1,5 @@
 from EventSystem import Event
+import utils
 
 class ActionSystem:
 
@@ -20,17 +21,11 @@ class ActionSystem:
 
     def __findObject(self, param):
         currRoom = self.__rooms[self.__player.room]
-        paramUp = param.upper()
 
-        for obj in currRoom.objects:
-            if obj['name'].upper() == paramUp:
-                return obj
-
-        for obj in self.__player.inventory:
-            if obj['name'].upper() == paramUp:
-                return obj
-
-        return None
+        obj = utils.findObjectByName(currRoom.objects, param)
+        if not obj is None:
+            return obj
+        return utils.findObjectByName(self.__player.inventory, param)
 
     def __findDirection(self, param):
         currRoom = self.__rooms[self.__player.room]

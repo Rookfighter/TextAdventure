@@ -1,4 +1,5 @@
 import collections
+import utils
 
 class Event:
 
@@ -46,13 +47,10 @@ class EventSystem:
         """
         room = self.__rooms[param['room']]
         for obj in param['objects']:
+            utils.defaultObject(obj)
             room.objects.append(obj)
-            if not 'useable' in obj:
-                obj['useable'] = False
-            if not 'takeable' in obj:
-                obj['takeable'] = False
-
             self.__tuiSystem.printObjectAdded(obj['name'])
+
         return True
 
     def __changeDirectionHandler(self, param):
@@ -76,7 +74,7 @@ class EventSystem:
 
     def __checkConstraintHandler(self,param):
         """
-        Handler for constraints that need to met. If they are not met a
+        Handler for constraints that need to be met. If they are not met a
         fail message is printed and the game terminates.
         """
         for obj in self.__player.inventory:

@@ -1,7 +1,4 @@
 from App import App
 
-try:
-    app = App()
-    app.run()
-except KeyboardInterrupt:
-    print('')
+app = App()
+app.run()
