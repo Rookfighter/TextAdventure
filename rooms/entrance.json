@@ -1,0 +1,17 @@
+{
+	"name": "Entrance",
+	"objects": [
+		{
+			"name": "Coat Stand",
+			"description": "A coat stand for visitors.",
+			"examine":"A single black coat hangs on it."
+		}
+	],
+	"directions": [
+		{
+			"name":"North",
+			"room":"living",
+			"locked":false
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"name": "Basement",
+	"objects": [
+	],
+	"directions": [
+		{
+			"name":"East",
+			"room":"living",
+			"locked":false
+		}
+	]
+}

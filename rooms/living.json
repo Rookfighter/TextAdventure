@@ -1,0 +1,27 @@
+{
+	"name": "Living Room",
+	"objects": [
+		{
+			"name": "Couch",
+			"description": "A very comfy looking couch",
+			"examine":"A lot of scratches cover the surface and the cushion was cut on various spots."
+		}
+	],
+	"directions": [
+			{
+				"name":"South",
+				"room":"entrance",
+				"locked":false
+			},
+			{
+				"name":"West",
+				"room":"basement",
+				"locked":true
+			},
+			{
+				"name":"East",
+				"room":"bathroom",
+				"locked":false
+			}
+	]
+}

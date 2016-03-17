@@ -1,0 +1,20 @@
+{
+	"name": "Bathroom",
+	"objects": [
+		{
+			"id":"k1",
+			"name": "Key",
+			"description": "A old looking key.",
+			"examine":"This might fit into one of the door locks.",
+			"takeable":true,
+			"useable":true
+		}
+	],
+	"directions": [
+		{
+			"name":"West",
+			"room":"living",
+			"locked":false
+		}
+	]
+}
