@@ -11,7 +11,7 @@ class App:
         self.__player = Player()
         self.__rooms = dict()
 
-        # systems
+        # sub systems
         self.__ioSystem = IOSystem(self.__player, self.__rooms)
         self.__tuiSystem = TUISystem(self.__player, self.__rooms)
         self.__eventSystem = EventSystem(self.__player, self.__rooms, self.__tuiSystem)

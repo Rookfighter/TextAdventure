@@ -145,13 +145,16 @@ class ActionSystem:
         action = actStr
         param = ''
 
+        # try to find a separating space
         idx = actStr.find(' ')
         if idx > 0:
             action = actStr[:idx]
             param = actStr[idx+1:]
 
+        # check if the given action is valid
         if not action in self.__actions:
             self.__tuiSystem.printInvalidAction(action)
             return
 
+        # execute the action
         self.__actions[action](param)

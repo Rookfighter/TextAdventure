@@ -45,6 +45,10 @@ class IOSystem:
         self.__rooms[roomID] = room
 
     def __enterRoom(self, roomID):
+        """
+        Loads the new current room and all neighouring rooms if they
+        haven't been loaded yet.
+        """
         if not roomID in self.__rooms:
             self.__loadRoom(roomID)
         for direction in self.__rooms[roomID].directions:

@@ -28,6 +28,9 @@ class EventSystem:
         return True
 
     def __changeLockHandler(self, param):
+        """
+        Locks and unlocks doors.
+        """
         room = self.__rooms[param['room']]
         for direction in room.directions:
             if direction['name'] == param['direction']:
@@ -38,6 +41,9 @@ class EventSystem:
         return False
 
     def __addObjectHandler(self, param):
+        """
+        Adds objects to a room.
+        """
         room = self.__rooms[param['room']]
         for obj in param['objects']:
             room.objects.append(obj)
@@ -45,6 +51,9 @@ class EventSystem:
         return True
 
     def __changeDirectionHandler(self, param):
+        """
+        Changes the visibility of a door.
+        """
         room = self.__rooms[param['room']]
         for direction in room.directions:
             if direction['name'] == param['direction']:
@@ -54,10 +63,17 @@ class EventSystem:
         return True
 
     def __endGameHandler(self, param):
+        """
+        Terminates the game.
+        """
         self.__tuiSystem.printToBeContinued()
         return False
 
     def __checkConstraintHandler(self,param):
+        """
+        Handler for constraints that need to met. If they are not met a
+        fail message is printed and the game terminates.
+        """
         for obj in self.__player.inventory:
             if obj['name'] == param['item']:
                 return True
