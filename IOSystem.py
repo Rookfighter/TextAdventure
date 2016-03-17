@@ -1,5 +1,6 @@
 import io
 import json
+import os
 from Room import Room
 
 class IOSystem:
@@ -8,9 +9,10 @@ class IOSystem:
         self.__lastRoom = player.room
         self.__player = player
         self.__rooms = rooms
+        self.__absPath = os.path.dirname(os.path.realpath(__file__))
 
     def __loadRoom(self, roomID):
-        fileName = 'rooms/{0}.json'.format(roomID)
+        fileName = '{0}/rooms/{1}.json'.format(self.__absPath, roomID)
         with io.open(fileName) as fp:
             jsObj = json.load(fp)
 
