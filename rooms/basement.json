@@ -15,7 +15,7 @@
 		{
 			"type":"checkConstraint",
 			"item":"Gas Lamp",
-			"failMsg":"The darkness is absolute and you lost orientation. In pure darkness you starve to death."
+			"failMsg":"The darkness is absolute and you lost orientation. After days in pure darkness you starve to death."
 		}
 	],
 	"onUse":
@@ -72,16 +72,10 @@
 				]
 			},
 			{
-				"type":"addDirection",
+				"type":"changeDirection",
 				"room":"basement",
-				"directions":
-				[
-					{
-						"name":"West",
-						"room":"tunnel",
-						"locked":false
-					}
-				]
+				"direction":"West",
+				"visible":true
 			}
 		],
 		"Axe":
@@ -104,6 +98,12 @@
 			"name":"East",
 			"room":"living",
 			"locked":false
+		},
+		{
+			"name":"West",
+			"room":"tunnel",
+			"locked":false,
+			"visible":false
 		}
 	]
 }
