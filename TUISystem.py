@@ -6,13 +6,38 @@ class TUISystem:
         self.__rooms = rooms
         self.__actions = []
 
-    def __printActions(self, ):
-        print('Actions: {0}'.format(', '.join(self.__actions)))
+    def printFramedOutput(self, lines):
+        # find longest line
+        maxLen = 0
+        for l in lines:
+            if len(l) > maxLen:
+                maxLen = len(l)
+
+        # create box header
+        f = ['+']
+        for _ in range(maxLen + 2):
+            f.append('-')
+        f.append('+')
+
+        # pad lines with spaces
+        toPrint = [''.join(f)]
+        for l in lines:
+            tmp = ['| ', l]
+            for _ in range(maxLen - len(l)):
+                tmp.append(' ')
+            tmp.append(' |')
+            toPrint.append(''.join(tmp))
+
+        # print everything
+        toPrint.append(''.join(f))
+        for l in toPrint:
+            print(l)
 
     def __promptAction(self):
         print('')
-        print('What do you want to do?')
-        self.__printActions()
+        lines = ['What do you want to do?',
+                 'Actions: {0}'.format(', '.join(self.__actions))]
+        self.printFramedOutput(lines)
         result = raw_input('> ')
         while result == '':
             result = raw_input('> ')

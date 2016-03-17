@@ -38,4 +38,3 @@ class App:
 
         print('')
         raw_input('Press RETURN...')
-        print('')
