@@ -5,3 +5,4 @@ class Room:
         self.objects = None
         self.directions = None
         self.actions = None
+        self.onUse = None

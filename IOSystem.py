@@ -22,6 +22,10 @@ class IOSystem:
         if 'objects' in jsObj:
             room.objects = jsObj['objects']
 
+        room.onUse = []
+        if 'onUse' in jsObj:
+            room.onUse = jsObj['onUse']
+
         for obj in room.objects:
             if not 'takeable' in obj:
                 obj['takeable'] = False

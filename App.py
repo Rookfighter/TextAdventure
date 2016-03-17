@@ -2,6 +2,7 @@ from Player import Player
 from TUISystem import TUISystem
 from ActionSystem import ActionSystem
 from IOSystem import IOSystem
+from EventSystem import EventSystem
 
 INIT_ROOM = 'entrance'
 
@@ -13,7 +14,9 @@ class App:
         # systems
         self.__ioSystem = IOSystem(self.__player, self.__rooms)
         self.__tuiSystem = TUISystem(self.__player, self.__rooms)
-        self.__actionSystem = ActionSystem(self.__player, self.__rooms, self.__tuiSystem)
+        self.__eventSystem = EventSystem(self.__player, self.__rooms, self.__tuiSystem)
+        self.__actionSystem = ActionSystem(self.__player, self.__rooms, self.__tuiSystem,
+                                           self.__eventSystem.getEventQueue())
         self.__tuiSystem.setActions(self.__actionSystem.getActions())
 
     def run(self):
@@ -22,3 +25,5 @@ class App:
             self.__ioSystem.update()
             actionStr = self.__tuiSystem.update()
             self.__actionSystem.update(actionStr)
+            if not self.__eventSystem.update():
+                break

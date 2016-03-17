@@ -73,5 +73,23 @@ class TUISystem:
     def printObjectTaken(self, objectName):
         print('{0} taken.'.format(objectName))
 
+    def printObjectAdded(self, objectName):
+        print('New object {0} added.'.format(objectName))
+
     def printObjectUntakeable(self, objectName):
         print('{0} cannot be taken.'.format(objectName))
+
+    def printUnusableObject(self, objectName):
+        print('{0} cannot be used.'.format(objectName))
+
+    def printNoEffect(self):
+        print('Nothing happens.')
+
+    def printMessage(self, message):
+        print(message)
+
+    def printChangeDoorLock(self, roomName, locked):
+        lockStr = 'unlocked'
+        if locked:
+            lockStr = 'locked'
+        print('The door to {0} was {1}.'.format(roomName, lockStr))
