@@ -36,6 +36,11 @@ class IOSystem:
                 obj['useable'] = False
 
         room.directions = jsObj['directions']
+        for direction in room.directions:
+            if not 'visible' in direction:
+                direction['visible'] = True
+            if not 'locked' in direction:
+                direction['locked'] = False
 
         self.__rooms[roomID] = room
 

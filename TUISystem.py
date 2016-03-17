@@ -14,6 +14,8 @@ class TUISystem:
         print('What do you want to do?')
         self.__printActions()
         result = raw_input('> ')
+        while result == '':
+            result = raw_input('> ')
         print('')
         return result
 
@@ -41,6 +43,8 @@ class TUISystem:
         if room.directions:
             print('You can leave the room')
             for direction in room.directions:
+                if not direction['visible']:
+                    continue
                 roomName = self.__rooms[direction['room']].name
                 print('* to the {0} and enter {1}'.format(direction['name'], roomName))
 

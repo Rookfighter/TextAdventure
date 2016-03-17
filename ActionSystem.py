@@ -38,7 +38,8 @@ class ActionSystem:
 
         for direction in currRoom.directions:
             roomName = self.__rooms[direction['room']].name
-            if paramUp ==  direction['name'].upper() or paramUp == roomName.upper():
+            if direction['visible'] and \
+                (paramUp ==  direction['name'].upper() or paramUp == roomName.upper()):
                 return direction
         return None
 

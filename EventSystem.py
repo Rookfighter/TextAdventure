@@ -18,7 +18,7 @@ class EventSystem:
             'message':self.__messageHandler,
             'changeLock':self.__changeLockHandler,
             'addObject':self.__addObjectHandler,
-            'addDirection':self.__addDirectionHandler,
+            'changeDirection':self.__changeDirectionHandler,
             'endGame':self.__endGameHandler,
             'checkConstraint':self.__checkConstraintHandler
         }
@@ -44,11 +44,13 @@ class EventSystem:
             self.__tuiSystem.printObjectAdded(obj['name'])
         return True
 
-    def __addDirectionHandler(self, param):
+    def __changeDirectionHandler(self, param):
         room = self.__rooms[param['room']]
-        for direction in param['directions']:
-            room.directions.append(direction)
-            self.__tuiSystem.printDoorFound(direction['name'])
+        for direction in room.directions:
+            if direction['name'] == param['direction']:
+                direction['visible'] = param['visible']
+                if direction['visible']:
+                    self.__tuiSystem.printDoorFound(direction['name'])
         return True
 
     def __endGameHandler(self, param):
