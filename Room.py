@@ -6,3 +6,4 @@ class Room:
         self.directions = None
         self.actions = None
         self.onUse = None
+        self.onEnter = None

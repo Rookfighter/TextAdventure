@@ -9,7 +9,6 @@ class IOSystem:
         self.__player = player
         self.__rooms = rooms
 
-
     def __loadRoom(self, roomID):
         fileName = 'rooms/{0}.json'.format(roomID)
         with io.open(fileName) as fp:
@@ -25,6 +24,10 @@ class IOSystem:
         room.onUse = []
         if 'onUse' in jsObj:
             room.onUse = jsObj['onUse']
+
+        room.onEnter = []
+        if 'onEnter' in jsObj:
+            room.onEnter = jsObj['onEnter']
 
         for obj in room.objects:
             if not 'takeable' in obj:

@@ -42,25 +42,30 @@ class ActionSystem:
                 return direction
         return None
 
+    def __createOnUseEvents(self, obj):
+        currRoom = self.__rooms[self.__player.room]
+        if not obj['name'] in currRoom.onUse:
+                self.__tuiSystem.printNoEffect()
+        else:
+            events = currRoom.onUse[obj['name']]
+            for event in events:
+                self.__eventQueue.append(Event(event['type'], event))
+            # remove on use events
+            del currRoom.onUse[obj['name']]
+
     def __use(self, param):
         """
         Callback for "use" command. Uses an item either from inventory or
         from the current room.
         """
         obj = self.__findObject(param)
-        currRoom = self.__rooms[self.__player.room]
 
         if obj is None:
             self.__tuiSystem.printInvalidObject(param)
             return
 
         if obj['useable']:
-            if not obj['name'] in currRoom.onUse:
-                self.__tuiSystem.printNoEffect()
-            else:
-                events = currRoom.onUse[obj['name']]
-                for event in events:
-                    self.__eventQueue.append(Event(event['type'], event))
+            self.__createOnUseEvents(obj)
         else:
             self.__tuiSystem.printUnusableObject(obj['name'])
 
@@ -83,10 +88,17 @@ class ActionSystem:
         else:
             self.__tuiSystem.printObjectUntakeable(obj['name'])
 
+    def __createOnEnterEvents(self):
+        currRoom = self.__rooms[self.__player.room]
+        for event in currRoom.onEnter:
+            self.__eventQueue.append(Event(event['type'], event))
+        # remove on enter events
+        del currRoom.onEnter[:]
+
     def __goto(self, param):
         """
         Callback for "goto" command. Moves to the next room by either specifying
-        the direction or the next room name..
+        the direction or the next room name.
         """
         direction = self.__findDirection(param)
 
@@ -98,6 +110,7 @@ class ActionSystem:
             self.__tuiSystem.printDoorLocked()
         else:
             self.__player.room = direction['room']
+            self.__createOnEnterEvents()
         return
 
     def __examine(self, param):

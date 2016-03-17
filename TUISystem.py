@@ -93,3 +93,9 @@ class TUISystem:
         if locked:
             lockStr = 'locked'
         print('The door to {0} was {1}.'.format(roomName, lockStr))
+
+    def printDoorFound(self, doorName):
+        print('Door to the {0} found.'.format(doorName))
+
+    def printToBeContinued(self):
+        print('To be continued...')

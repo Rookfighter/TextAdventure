@@ -18,7 +18,9 @@ class EventSystem:
             'message':self.__messageHandler,
             'changeLock':self.__changeLockHandler,
             'addObject':self.__addObjectHandler,
-            'endGame':self.__endGameHandler
+            'addDirection':self.__addDirectionHandler,
+            'endGame':self.__endGameHandler,
+            'checkConstraint':self.__checkConstraintHandler
         }
 
     def __messageHandler(self, param):
@@ -37,11 +39,28 @@ class EventSystem:
 
     def __addObjectHandler(self, param):
         room = self.__rooms[param['room']]
-        room.objects.append(param['object'])
-        self.__tuiSystem.printObjectAdded(param['object']['name'])
+        for obj in param['objects']:
+            room.objects.append(obj)
+            self.__tuiSystem.printObjectAdded(obj['name'])
+        return True
+
+    def __addDirectionHandler(self, param):
+        room = self.__rooms[param['room']]
+        for direction in param['directions']:
+            room.directions.append(direction)
+            self.__tuiSystem.printDoorFound(direction['name'])
         return True
 
     def __endGameHandler(self, param):
+        self.__tuiSystem.printToBeContinued()
+        return False
+
+    def __checkConstraintHandler(self,param):
+        for obj in self.__player.inventory:
+            if obj['name'] == param['item']:
+                return True
+
+        self.__tuiSystem.printMessage(param['failMsg'])
         return False
 
     def update(self):
