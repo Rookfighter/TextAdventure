@@ -27,3 +27,5 @@ class App:
             self.__actionSystem.update(actionStr)
             if not self.__eventSystem.update():
                 break
+
+        raw_input('Press RETURN...')

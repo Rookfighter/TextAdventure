@@ -47,6 +47,11 @@ class EventSystem:
         room = self.__rooms[param['room']]
         for obj in param['objects']:
             room.objects.append(obj)
+            if not 'useable' in obj:
+                obj['useable'] = False
+            if not 'takeable' in obj:
+                obj['takeable'] = False
+
             self.__tuiSystem.printObjectAdded(obj['name'])
         return True
 
