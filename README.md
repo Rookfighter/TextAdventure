@@ -1,6 +1,6 @@
 # Text Adventure
 
-This is a simple text adventure for the Happie Cat coding challenge.
+This is a simple text adventure.
 
 Python is used as programming language and rooms, objects and events are defined in json files.
 The player can walk through various rooms and take, use or examine items to explore the game world.
